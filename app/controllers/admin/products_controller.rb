@@ -1,5 +1,7 @@
 class Admin::ProductsController < ApplicationController
 
+  http_basic_authenticate_with name: ENV['NAME'], password: ENV['PASSWORD']
+
   before_filter :authorize
 
   def index
