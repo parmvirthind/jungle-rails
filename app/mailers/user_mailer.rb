@@ -6,6 +6,6 @@ class UserMailer < ApplicationMailer
     @order_total = order.total
     @line_items = order.line_items
 
-     mail(to: @email, subject: 'ORDER ID')
+     mail(to: @email, subject: "Order # #{order.id}")
    end
 end

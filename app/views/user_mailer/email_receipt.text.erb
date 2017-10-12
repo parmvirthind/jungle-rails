@@ -2,6 +2,14 @@
 Thank you for your order!
 ===============================================
  
-TOTAL PRICE
+ORDER SUMMARY:
 
-LINE ITEMS
+TOTAL PRICE: <%= @order_total %>
+
+<% @line_items.each do |item| %>
+            <% if product = Product.find_by(id: item.product_id) %>
+                  <%= item.product.name %>
+                  <%= item.product.description %>
+                  <%= item.product.price %>
+            <% end %>
+          <% end %>
