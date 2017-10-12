@@ -10,3 +10,7 @@
 body {
   padding-top: 70px;
 }
+
+a.disabled {
+  pointer-events: none;
+}
