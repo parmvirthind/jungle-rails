@@ -50,18 +50,18 @@
         <tbody>
           <% @reviews.each do |review| %>
             <% if user = User.find_by(id: review.user_id) %>
-              <tr>
+              <tr scope="row">
                 <td>
                   <p><%= user.first_name %></p>
                 </td>
-                <td>
+                <td style="width:5%">
                   <%= review.rating %>
                 </td>
                 <td>
                   <%= review.description %>
-                </td>
-                <td>
-                  <%= link_to fa_icon('trash'), review, :method => :delete, class: "btn btn-danger" %>
+                <% if user == current_user%>
+                  <%= link_to fa_icon('trash'), review, :method => :delete, class: "btn btn-danger pull-right" %>
+                <% end %>
                 </td>
               </tr>
             <% end %>

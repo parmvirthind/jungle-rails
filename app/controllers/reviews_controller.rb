@@ -20,12 +20,8 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @product = Product.find(@review.product_id)
     @user = @review.user_id
-    if @user == current_user.id
-      @review.destroy
-      redirect_to :back
-    else
-      redirect_to :back
-    end
+    @review.destroy
+    redirect_to :back
   end
 
   private
