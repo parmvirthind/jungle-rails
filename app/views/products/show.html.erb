@@ -60,6 +60,9 @@
                 <td>
                   <%= review.description %>
                 </td>
+                <td>
+                  <%= link_to fa_icon('trash'), review, :method => :delete, class: "btn btn-danger" %>
+                </td>
               </tr>
             <% end %>
           <% end %>
