@@ -2,6 +2,12 @@
 
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
+## Screenshots
+
+![Product Index](https://github.com/parmvirthind/jungle-rails/blob/master/public/screenshots/Product%20Index.png?raw=true)
+![Product Details](https://github.com/parmvirthind/jungle-rails/blob/master/public/screenshots/Product%20Detail%20Page.png?raw=true)
+![Homepage](https://github.com/parmvirthind/jungle-rails/blob/master/public/screenshots/Homepage.png?raw=true)
+
 
 ## Setup
 
