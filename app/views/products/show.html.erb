@@ -28,6 +28,16 @@
 
   </article>
 
+  <div>
+  <%= form_for [@product, @review] do |f| %>
+  <%= f.label :rating%>:
+  <%= f.select :rating, [1,2,3,4,5]%>
+  <%= f.label :description %>:
+  <%= f.text_area :description %><br />
+  <%= f.submit %>
+<% end %>
+  </div>
+
 <div class="panel panel-default items">
       <table class="table table-bordered">
         <thead>
@@ -38,7 +48,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @review.each do |review| %>
+          <% @reviews.each do |review| %>
             <% if user = User.find_by(id: review.user_id) %>
               <tr>
                 <td>
