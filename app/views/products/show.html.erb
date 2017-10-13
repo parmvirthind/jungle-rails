@@ -28,13 +28,13 @@
 
   </article>
 
-  <div>
+  <div class="well">
   <%= form_for [@product, @review] do |f| %>
-  <%= f.label :rating%>:
-  <%= f.select :rating, [1,2,3,4,5]%>
-  <%= f.label :description %>:
-  <%= f.text_area :description %><br />
-  <%= f.submit %>
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control"%>
+  <%= f.label :rating%>
+  <%= f.select :rating, [1,2,3,4,5] %><br />
+  <%= f.submit class: "btn btn-info" %>
 <% end %>
   </div>
 
