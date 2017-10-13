@@ -24,7 +24,7 @@
           <dd><%= @product.price %></dd>
           <dt>Rating</dt>
           <dd>
-            <% @product.reviews.average(:rating).to_i.times do |x| %>
+            <% @product.reviews.average(:rating).round.to_i.times do |x| %>
             ⭐️
             <% end %>
           </dd>
@@ -34,48 +34,52 @@
 
   </article>
 
-  <div class="well">
-  <%= form_for [@product, @review] do |f| %>
-  <%= f.label :description %>
-  <%= f.text_area :description, class: "form-control"%>
-  <%= f.label :rating%>
-  <%= f.select :rating, [1,2,3,4,5] %><br />
-  <%= f.submit class: "btn btn-info" %>
-<% end %>
+  <div>
+    <h3>Post a Review</h3>
+    <div class="well">
+      <%= form_for [@product, @review] do |f| %>
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control"%><br />
+      <%= f.label :rating%>
+      <%= f.select :rating, [1,2,3,4,5] %>
+      <%= f.submit class: "btn btn-info pull-right" %>
+      <% end %>
+    </div>
   </div>
 
+    <h3>Reviews</h3>
 <div class="panel panel-default items">
-      <table class="table table-bordered">
-        <thead>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Rating</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reviews.each do |review| %>
+        <% if user = User.find_by(id: review.user_id) %>
           <tr>
-            <th>User</th>
-            <th>Rating</th>
-            <th>Description</th>
+            <td>
+              <p><%= user.first_name %></p>
+            </td>
+            <td style="width:10%">
+              <% review.rating.times do |x|  %>
+                ⭐️
+              <% end %>
+            </td>
+            <td>
+              <%= review.description %>
+              <% if user == current_user%>
+                <%= link_to fa_icon('trash'), review, :method => :delete, class: "btn btn-danger pull-right" %>
+              <% end %>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <% @reviews.each do |review| %>
-            <% if user = User.find_by(id: review.user_id) %>
-              <tr scope="row">
-                <td>
-                  <p><%= user.first_name %></p>
-                </td>
-                <td style="width:10%">
-                  <% review.rating.times do |x|  %>
-                  ⭐️
-                  <% end %>
-                </td>
-                <td>
-                  <%= review.description %>
-                <% if user == current_user%>
-                  <%= link_to fa_icon('trash'), review, :method => :delete, class: "btn btn-danger pull-right" %>
-                <% end %>
-                </td>
-              </tr>
-            <% end %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 </section>

@@ -2,12 +2,12 @@
   <header>
     <%= link_to product do %>
       <%= image_tag product.image.thumb, alt: product.name %>
-      <% product.reviews.average(:rating).to_i.times do |x| %>
-      ⭐️
-      <% end %>
       <h4><%= product.name %> </h4>
     <% end %>
   </header>
+  <% product.reviews.average(:rating).to_f.round.to_i.times do |x| %>
+    ⭐️
+  <% end %>
   <p class="description">
     <%= product.description %>
   </p>
