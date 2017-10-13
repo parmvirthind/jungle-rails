@@ -63,6 +63,19 @@ main section.categories-show {
         font-size: 0.8em;
       }
 
+      aside.rating {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        padding: 10px;
+        background-color: #27b433;
+        color: white;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        font-size: 0.8em;
+      }
+
+
       &:hover {
 
         border-color: #999;
