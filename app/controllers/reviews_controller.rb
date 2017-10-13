@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     @review.product = @product
     @review.user_id = current_user.id
 
-    if @review.save!
+    if @review.save
       redirect_to @product, notice: 'Review created!'
     else
       redirect_to :back
