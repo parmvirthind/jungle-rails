@@ -58,4 +58,24 @@ RSpec.describe User, type: :model do
       expect(user.password.length).to_not be > 3
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    it 'should log you in if email and passwords match' do
+      user = User.create(first_name: "A", last_name: "B", email: "a@a.com", password: "1234", password_confirmation: "1234")
+      user1 = User.authenticate_with_credentials(user.email, user.password)
+      expect(user1).to_not be(nil)
+    end
+  end
+
+  it 'should not log you in if email and passwords dont match' do
+    user = User.create(first_name: "A", last_name: "B", email: "a@a.com", password: "1234", password_confirmation: "1234")
+    user1 = User.authenticate_with_credentials(user.email, "12345")
+    expect(user1).to be(nil)
+  end
+
+  it 'should log you in if email has spaces' do
+    user = User.create(first_name: "A", last_name: "B", email: "a@a.com", password: "1234", password_confirmation: "1234")
+    user1 = User.authenticate_with_credentials("   A@a.com", user.password)
+    expect(user1).to_not be(nil)
+  end
 end
