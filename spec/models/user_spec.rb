@@ -51,4 +51,11 @@ RSpec.describe User, type: :model do
       expect(user.password).to_not eq(user.password_confirmation)
     end
   end
+
+  describe 'password minimum characters' do
+    it 'should be invalid if password is less than three characters' do
+      user = User.new(first_name: "A", last_name: "B", email: "a@a.com", password: "12", password_confirmation: "12")      
+      expect(user.password.length).to_not be > 3
+    end
+  end
 end
