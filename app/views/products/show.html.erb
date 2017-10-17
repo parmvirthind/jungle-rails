@@ -24,8 +24,12 @@
           <dd><%= @product.price %></dd>
           <dt>Rating</dt>
           <dd>
+            <% if @product.reviews.empty? %>
+            No rating
+            <% else %>
             <% @product.reviews.average(:rating).round.to_i.times do |x| %>
             ⭐️
+            <% end %>
             <% end %>
           </dd>
         </dl>
