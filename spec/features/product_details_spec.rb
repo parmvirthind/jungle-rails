@@ -14,14 +14,6 @@ RSpec.feature "Users can navigate to product details page", type: :feature, js: 
         price: 64.99
       )
     end
-
-    @user = User.create!(
-      first_name: "Bugle",
-      last_name: "Jones",
-      email: "bugle@jones.com",
-      password: "123456",
-      password_confirmation: "123456",
-    )
   end
 
   scenario "They see all product details" do
